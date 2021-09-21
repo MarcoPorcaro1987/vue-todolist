@@ -29,7 +29,12 @@
             <main>
                 <div class="todo-cont">
                     <ul v-if = "todos.length > 0">
-                        <li v-for="(todo,index) in todos" :key="(index)">{{todo}}<i class="fas fa-times" @click = "removeTodo(index)"></i></li>
+                        <li v-for="(todo,index) in todos" 
+                            :key="index" 
+                            ><span :class="{active: todo.fatto}">{{todo.compito}}</span>
+                            <button v-if = "todo.fatto == false" @click = "todo.fatto = true">Fatto</button>
+                            <i class="fas fa-times" @click = "removeTodo(index)"></i>
+                         </li>
                     </ul>
                     <h2 v-else>La tua lista ToDos è vuota!</h2>
                 </div>
